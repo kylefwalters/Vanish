@@ -11,8 +11,8 @@ public class topdown_Player : MonoBehaviour
     private float targetSpeedy;
     private float maxSpeed;
     public static float playerSize;
-    private float timeTillStep;
-    public float stepLength;
+    //private float timeTillStep;
+    //public float stepLength;
 
     private bool isMoving = false;
     private bool isHurt = false;
@@ -21,15 +21,15 @@ public class topdown_Player : MonoBehaviour
     public static bool isVisible = true;
     public static bool isHit;
 
-    private Animator anim;
-    public Animator childAnim;
+    //private Animator anim;
+    //public Animator childAnim;
     private Rigidbody2D rb;
     private Transform mousePos;
-    public GameObject footsteps;
+    //public GameObject footsteps;
 
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
+        //anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         playerSize = gameObject.GetComponent<CircleCollider2D>().bounds.extents.x;
     }
@@ -46,8 +46,8 @@ public class topdown_Player : MonoBehaviour
             if (!isHurt && !dying)
             {
                 isMoving = true;
-                anim.SetBool("IsRunning", true);
-                childAnim.SetBool("isRunning", true);
+                //anim.SetBool("IsRunning", true);
+                //childAnim.SetBool("isRunning", true);
                 targetSpeedx = -6.5f;
             }
         }
@@ -57,8 +57,8 @@ public class topdown_Player : MonoBehaviour
             if (!isHurt && !dying)
             {
                 isMoving = true;
-                anim.SetBool("IsRunning", true);
-                childAnim.SetBool("isRunning", true);
+                //anim.SetBool("IsRunning", true);
+                //childAnim.SetBool("isRunning", true);
                 targetSpeedx = 6.5f;
             }
         }
@@ -71,14 +71,14 @@ public class topdown_Player : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) && !isHit || Input.GetKey(KeyCode.W) && !isHit)
         {
             isMoving = true;
-            anim.SetBool("IsRunning", true);
-            childAnim.SetBool("isRunning", true);
+            //anim.SetBool("IsRunning", true);
+            //childAnim.SetBool("isRunning", true);
             targetSpeedy = 6.5f;
         } else if (Input.GetKey(KeyCode.DownArrow) && !isHit || Input.GetKey(KeyCode.S) && !isHit)
         {
             isMoving = true;
-            anim.SetBool("IsRunning", true);
-            childAnim.SetBool("isRunning", true);
+            //anim.SetBool("IsRunning", true);
+            //childAnim.SetBool("isRunning", true);
             targetSpeedy = -6.5f;
         } else
         {
@@ -88,8 +88,8 @@ public class topdown_Player : MonoBehaviour
         if (currentSpeedx == 0 && currentSpeedy == 0)
         {
             isMoving = false;
-            anim.SetBool("IsRunning", false);
-            childAnim.SetBool("isRunning", false);
+            //anim.SetBool("IsRunning", false);
+            //childAnim.SetBool("isRunning", false);
         }
 
         //Player Acceleration
@@ -112,7 +112,7 @@ public class topdown_Player : MonoBehaviour
         {
             if (timeTillStep <= 0)
             {
-                Instantiate(footsteps, new Vector2(transform.position.x, transform.position.y), Quaternion.AngleAxis(0, Vector3.up));
+                //Instantiate(footsteps, new Vector2(transform.position.x, transform.position.y), Quaternion.AngleAxis(0, Vector3.up));
                 timeTillStep = stepLength;
             } else
             {
