@@ -108,7 +108,7 @@ public class topdown_Player : MonoBehaviour
         }
 
         //player footstep sounds
-        if (isMoving == true)
+        /*if (isMoving == true)
         {
             if (timeTillStep <= 0)
             {
@@ -118,7 +118,7 @@ public class topdown_Player : MonoBehaviour
             {
                 timeTillStep -= Time.deltaTime;
             }
-        }
+        }*/
 
         //cancels any velocity from collisions
         rb.velocity = Vector2.zero;

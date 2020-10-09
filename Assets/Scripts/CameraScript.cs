@@ -6,9 +6,9 @@ public class CameraScript : MonoBehaviour
 {
     [Header("Camera Movement")]
     public Transform target;
-    [Range(1.0f,5.0f)]
-    public float trackSpeed = 2.5f;
-    private Vector3 velocity;
+    [Range(0.0f,1.0f)]
+    public float trackSpeed = 0.5f;
+    private Vector2 velocity;
 
     private float targetOrtho;
     private float velOrtho;
@@ -26,7 +26,9 @@ public class CameraScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, trackSpeed);
+        float invTrackSpeed = 1.01f - (trackSpeed);
+        Vector2 targetPos = Vector2.SmoothDamp(transform.position, target.position, ref velocity, invTrackSpeed);
+        transform.position = new Vector3(targetPos.x, targetPos.y, -10);
 
         //Smooths Camera Zoom
         Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetOrtho, ref velOrtho, 0.1f);
