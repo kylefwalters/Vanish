@@ -21,15 +21,17 @@ public class topdown_Player : MonoBehaviour
     public static bool isVisible = true;
     public static bool isHit;
 
-    //private Animator anim;
-    //public Animator childAnim;
+     Animator anim;
+    public Animator childAnim;
+    
     private Rigidbody2D rb;
     private Transform mousePos;
     //public GameObject footsteps;
 
+
     void Start()
     {
-        //anim = gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         playerSize = gameObject.GetComponent<CircleCollider2D>().bounds.extents.x;
     }
@@ -66,22 +68,24 @@ public class topdown_Player : MonoBehaviour
         {
             targetSpeedx = 0;
         }
-
+        
         //Player Y Movement
         if (Input.GetKey(KeyCode.UpArrow) && !isHit || Input.GetKey(KeyCode.W) && !isHit)
         {
             isMoving = true;
-            //anim.SetBool("IsRunning", true);
+            anim.SetBool("IsRunning", true);
             //childAnim.SetBool("isRunning", true);
             targetSpeedy = 6.5f;
         } else if (Input.GetKey(KeyCode.DownArrow) && !isHit || Input.GetKey(KeyCode.S) && !isHit)
         {
             isMoving = true;
-            //anim.SetBool("IsRunning", true);
+
+            anim.SetBool("IsRunning", true);
             //childAnim.SetBool("isRunning", true);
             targetSpeedy = -6.5f;
         } else
         {
+            
             targetSpeedy = 0;
         }
 
