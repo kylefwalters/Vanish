@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: shadow
+    uniqueID: 659049491
+    locked: 0
+  - name: Furniture
+    uniqueID: 594099389
+    locked: 0
+  - name: Wall
+    uniqueID: 2532562685
+    locked: 0
