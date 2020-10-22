@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class topdown_Player : MonoBehaviour
 {
+    //the current speed of the player in respective axes
     private float currentSpeedx;
     private float currentSpeedy;
+    //the target speed of the player in respective axes
     private float targetSpeedx;
     private float targetSpeedy;
-    private float maxSpeed;
+    private float maxSpeed; //Affects max speed the player can reach
+    private float speedBuff = 1.0f; //Speed buff (for items)
+    public float speedMod = 2.0f; //Speed modifier for adjusting player speed
     public static float playerSize;
     //private float timeTillStep;
     //public float stepLength;
@@ -18,7 +22,8 @@ public class topdown_Player : MonoBehaviour
     private bool isHurt = false;
     private bool dying = false;
     private bool facingRL;
-    public static bool isVisible = true;
+    //public static bool isVisible = true;
+    [HideInInspector]
     public static bool isHit;
 
      Animator anim;
@@ -28,19 +33,34 @@ public class topdown_Player : MonoBehaviour
     private Transform mousePos;
     //public GameObject footsteps;
 
+    //[HideInInspector]
+    public GameObject lastItem; //Last item to enter player collision range
+    [Header("Items"), Tooltip("The duration of the candy powerup")]
+    public float candyDuration = 3.0f;
+    private float _candyDuration;
 
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        playerSize = gameObject.GetComponent<CircleCollider2D>().bounds.extents.x;
+        playerSize = gameObject.GetComponent<Collider2D>().bounds.extents.x;
+    }
+
+    void Awake()
+    {
+        //Checks if powerup was in progress
+        if(_candyDuration > 0)
+        {
+            StartCoroutine(Candy());
+        }
     }
 
     void FixedUpdate()
     {
+        #region Player Movement
         rb.MovePosition(rb.position + new Vector2(currentSpeedx, currentSpeedy) * Time.fixedDeltaTime);
-        currentSpeedx = Mathf.MoveTowards(currentSpeedx, targetSpeedx, maxSpeed * Time.deltaTime);
-        currentSpeedy = Mathf.MoveTowards(currentSpeedy, targetSpeedy, maxSpeed * Time.deltaTime);
+        currentSpeedx = Mathf.MoveTowards(currentSpeedx, targetSpeedx * speedBuff * speedMod, maxSpeed * Time.deltaTime * speedBuff * speedMod);
+        currentSpeedy = Mathf.MoveTowards(currentSpeedy, targetSpeedy * speedBuff * speedMod, maxSpeed * Time.deltaTime * speedBuff * speedMod);
 
         //Player X Movement
         if (Input.GetKey(KeyCode.LeftArrow) && !isHit || Input.GetKey(KeyCode.A) && !isHit)
@@ -97,21 +117,23 @@ public class topdown_Player : MonoBehaviour
         }
 
         //Player Acceleration
-        if (targetSpeedx > 0 && currentSpeedx < 0 && targetSpeedy > 0 && currentSpeedy < 0 || targetSpeedx < 0 && currentSpeedx > 0 && targetSpeedy < 0 && currentSpeedy > 0)
+        if (targetSpeedx > 0 && currentSpeedx < 0 && targetSpeedy > 0 && currentSpeedy < 0 || targetSpeedx < 0 && currentSpeedx > 0 && targetSpeedy < 0 && currentSpeedy > 0) //Decelerate slower if attempting to go in the opposite direction
         {
-            maxSpeed = 50f;
+            maxSpeed = 30f;
         }
         else
-        if (targetSpeedx == 0 && targetSpeedy == 0)
+        if (targetSpeedx == 0 && targetSpeedy == 0) //Decelerate slower if not pressing movement keys
         {
-            maxSpeed = 50f;
+            maxSpeed = 30f;
         }
         else
         {
             maxSpeed = 40f;
         }
+        #endregion
 
         //player footstep sounds
+        #region Footsteps
         /*if (isMoving == true)
         {
             if (timeTillStep <= 0)
@@ -123,6 +145,7 @@ public class topdown_Player : MonoBehaviour
                 timeTillStep -= Time.deltaTime;
             }
         }*/
+        #endregion
 
         //cancels any velocity from collisions
         rb.velocity = Vector2.zero;
@@ -134,13 +157,15 @@ public class topdown_Player : MonoBehaviour
         }
 
         //player look at mouse Camera.main.ScreenToWorldPoint(Input.mousePosition)
-        var pos = Camera.main.WorldToScreenPoint(transform.position);
+        #region Player Rotation
+        /*var pos = Camera.main.WorldToScreenPoint(transform.position);
         var dir = Input.mousePosition - pos;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if (!isHit)
         {
             transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        }
+        }*/
+        #endregion
 
         //Player Death
         if (isHit == true)
@@ -156,4 +181,51 @@ public class topdown_Player : MonoBehaviour
             SceneManager.LoadScene(currentScene.name);
         }
     }
+
+    private void Update()
+    {
+        //Item pickup
+        if (Input.GetKeyDown(KeyCode.Space) && lastItem != null)
+        {
+            //string itemName = lastItem.GetComponent<ItemBase>().itemType.ToString();
+            ItemEffect(lastItem);
+        }
+    }
+
+    #region Powerups
+    void ItemEffect(GameObject item)
+    {
+        string itemName = item.name;
+        Destroy(item);
+        /*string nameEnding = itemName.Substring(itemName.Length - 9, itemName.Length);
+        if(nameEnding.ToLowerInvariant()==" powerup")
+            itemName = itemName.Substring(0, itemName.Length - 8).ToLowerInvariant();*/
+        itemName = itemName.Substring(0, 5).ToLower();
+        print(itemName);
+
+        switch (itemName)
+        {
+            case "candy":
+                //Effect for picking up item
+
+                speedBuff *= 1.5f;
+                _candyDuration = candyDuration;
+                StartCoroutine(Candy());
+                break;
+            case null:
+                break;
+        }
+    }
+
+    IEnumerator Candy()
+    {
+        while(_candyDuration >= 0)
+        {
+            _candyDuration -= Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+        }
+        speedBuff /= 1.5f;
+        yield return null;
+    }
+    #endregion
 }
