@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     public List<GameObject> objectives = new List<GameObject>();
     private List<GameObject> _objectives = new List<GameObject>();
 
-    private GameObject levelData;
-    private float timer;
+    public GameObject levelData;
+    private float timer = 30;
+    [SerializeField, Tooltip("In-game display of timer")]
+    private GameObject timerDisplay;
+    [HideInInspector]
+    public bool isPaused;
 
     int currentScene;
 
@@ -24,17 +30,23 @@ public class LevelManager : MonoBehaviour
         }
         _objectives = objectives;
 
-        levelData = GameObject.Find("Level Data");
+        if(levelData!=null)
+            levelData = GameObject.Find("Level Data");
         timer = levelData.GetComponent<LevelData>().levelTime;
 
         currentScene = SceneManager.GetActiveScene().buildIndex; //Grabs current scene's index
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-            onLevelFail();
+        if (!isPaused)
+        {
+            timer -= Time.deltaTime;
+            timerDisplay.GetComponent<TextMeshProUGUI>().text = string.Format("{0:#.00}s", timer);
+
+            if (timer <= 0)
+                onLevelFail();
+        }
     }
 
     public void CheckForCompletion() //Checks if Level is complete
