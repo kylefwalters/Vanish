@@ -14,6 +14,7 @@ public class topdown_Player : MonoBehaviour
     private float maxSpeed; //Affects max speed the player can reach
     private float speedBuff = 1.0f; //Speed buff (for items)
     public float speedMod = 2.0f; //Speed modifier for adjusting player speed
+    private int juiceCount = 0; //The number of juice puddles the player is touching
     public static float playerSize;
     //private float timeTillStep;
     //public float stepLength;
@@ -55,12 +56,27 @@ public class topdown_Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name.Substring(0, 5).ToLower() == "juice")
+            juiceCount++;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name.Substring(0, 5).ToLower() == "juice")
+            juiceCount--;
+    }
+
     void FixedUpdate()
     {
         #region Player Movement
         rb.MovePosition(rb.position + new Vector2(currentSpeedx, currentSpeedy) * Time.fixedDeltaTime);
+        if (juiceCount > 0)
+            speedBuff *= 0.5f;
         currentSpeedx = Mathf.MoveTowards(currentSpeedx, targetSpeedx * speedBuff * speedMod, maxSpeed * Time.deltaTime * speedBuff * speedMod);
         currentSpeedy = Mathf.MoveTowards(currentSpeedy, targetSpeedy * speedBuff * speedMod, maxSpeed * Time.deltaTime * speedBuff * speedMod);
+        if (juiceCount > 0)
+            speedBuff *= 2.0f;
 
         //Player X Movement
         if (Input.GetKey(KeyCode.LeftArrow) && !isHit || Input.GetKey(KeyCode.A) && !isHit)
