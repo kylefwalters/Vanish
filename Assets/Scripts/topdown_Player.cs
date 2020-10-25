@@ -84,7 +84,8 @@ public class topdown_Player : MonoBehaviour
             if (!isHurt && !dying)
             {
                 isMoving = true;
-                //anim.SetBool("IsRunning", true);
+                anim.SetBool("IsRunningLeft", true);
+                anim.SetBool("IsRunningRight", false);
                 //childAnim.SetBool("isRunning", true);
                 targetSpeedx = -6.5f;
             }
@@ -95,13 +96,16 @@ public class topdown_Player : MonoBehaviour
             if (!isHurt && !dying)
             {
                 isMoving = true;
-                //anim.SetBool("IsRunning", true);
+                anim.SetBool("IsRunningRight", true);
+                anim.SetBool("IsRunningLeft", false);
                 //childAnim.SetBool("isRunning", true);
                 targetSpeedx = 6.5f;
             }
         }
         else
         {
+            anim.SetBool("IsRunningLeft", false);
+            anim.SetBool("IsRunningRight", false);
             targetSpeedx = 0;
         }
         
@@ -109,19 +113,20 @@ public class topdown_Player : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) && !isHit || Input.GetKey(KeyCode.W) && !isHit)
         {
             isMoving = true;
-            anim.SetBool("IsRunning", true);
+            anim.SetBool("IsRunningUp", true);
             //childAnim.SetBool("isRunning", true);
             targetSpeedy = 6.5f;
         } else if (Input.GetKey(KeyCode.DownArrow) && !isHit || Input.GetKey(KeyCode.S) && !isHit)
         {
             isMoving = true;
 
-            anim.SetBool("IsRunning", true);
+            anim.SetBool("IsRunningDown", true);
             //childAnim.SetBool("isRunning", true);
             targetSpeedy = -6.5f;
         } else
         {
-            
+            anim.SetBool("IsRunningUp", false);
+            anim.SetBool("IsRunningDown", false);
             targetSpeedy = 0;
         }
 

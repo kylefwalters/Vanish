@@ -11,17 +11,20 @@ public class LevelManager : MonoBehaviour
     private List<GameObject> _objectives = new List<GameObject>();
 
     public GameObject levelData;
-    private float timer = 30;
+    private float timer =30 ;
     [SerializeField, Tooltip("In-game display of timer")]
     private GameObject timerDisplay;
     [HideInInspector]
     public bool isPaused;
+    public TimeBar timeBar;
 
     int currentScene;
 
     void Start()
     {
         DontDestroyOnLoad(this);
+
+        timeBar.SetMaxTime(timer);
 
         GameObject[] objectivesArray = GameObject.FindGameObjectsWithTag("Objecive");
         for(int i=0; i < objectivesArray.Length; i++)
@@ -41,11 +44,14 @@ public class LevelManager : MonoBehaviour
     {
         if (!isPaused)
         {
+            
             timer -= Time.deltaTime;
             timerDisplay.GetComponent<TextMeshProUGUI>().text = string.Format("{0:#.00}s", timer);
 
             if (timer <= 0)
                 onLevelFail();
+
+            timeBar.SetTime(timer);
         }
     }
 

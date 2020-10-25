@@ -49,6 +49,9 @@ TagManager:
   - name: Furniture
     uniqueID: 594099389
     locked: 0
+  - name: item
+    uniqueID: 3316306999
+    locked: 0
   - name: Wall
     uniqueID: 2532562685
     locked: 0
