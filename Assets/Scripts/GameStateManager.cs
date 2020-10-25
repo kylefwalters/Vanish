@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    public GameObject playerr;
     private enum states
     {
         play,
@@ -47,7 +48,11 @@ public class GameStateManager : MonoBehaviour
         priorState = currentState;
         currentState = states.pause;
 
+       
+
         levelManager.GetComponent<LevelManager>().isPaused = true;
+
+
 
         if (pauseMenu != null)
         {
@@ -62,8 +67,8 @@ public class GameStateManager : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<topdown_Player>().enabled = false;
-
         
+
     }
 
     public void UnPause()
