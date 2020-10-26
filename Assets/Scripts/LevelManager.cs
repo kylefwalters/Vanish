@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 
         timeBar.SetMaxTime(timer);
 
-        GameObject[] objectivesArray = GameObject.FindGameObjectsWithTag("Objecive");
+        GameObject[] objectivesArray = GameObject.FindGameObjectsWithTag("Objective");
         for(int i=0; i < objectivesArray.Length; i++)
         {
             objectives.Add(objectivesArray[i]);

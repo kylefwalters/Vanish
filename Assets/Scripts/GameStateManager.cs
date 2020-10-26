@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -95,6 +96,6 @@ public class GameStateManager : MonoBehaviour
     public void ExitGame() //Accessed by the exit button on the pause menu
     {
         print("Exiting");
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }

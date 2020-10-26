@@ -16,6 +16,7 @@ public class Objective : MonoBehaviour
         if (collision.tag == "Player")
         {
             Destroy(this);
+            gameObject.SetActive(false);
         }
     }
 
