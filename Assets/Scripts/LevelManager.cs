@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
 
-        timeBar.SetMaxTime(timer);
+        
 
         GameObject[] objectivesArray = GameObject.FindGameObjectsWithTag("Objective");
         for(int i=0; i < objectivesArray.Length; i++)
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         if(levelData!=null)
             levelData = GameObject.Find("Level Data");
         timer = levelData.GetComponent<LevelData>().levelTime;
-
+        timeBar.SetMaxTime(timer);
         currentScene = SceneManager.GetActiveScene().buildIndex; //Grabs current scene's index
     }
 
