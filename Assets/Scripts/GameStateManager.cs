@@ -64,11 +64,14 @@ public class GameStateManager : MonoBehaviour
         player.GetComponent<topdown_Player>().enabled = false;
 
         //Make sure this is at the end of the function
-        enemies = GameObject.FindGameObjectsWithTag("enemy");
-        foreach (GameObject enemy in enemies)
+        if(GameObject.FindGameObjectsWithTag("enemy") != null)
         {
-            enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-        }
+            enemies = GameObject.FindGameObjectsWithTag("enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+            }
+        } 
     }
 
     public void UnPause()
