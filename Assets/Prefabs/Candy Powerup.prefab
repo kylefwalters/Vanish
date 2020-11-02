@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7460781572636096220}
   - component: {fileID: 7460781572636096221}
   - component: {fileID: 4153663245092687056}
-  - component: {fileID: 222258135878584966}
+  - component: {fileID: -9108368287728431211}
   m_Layer: 0
   m_Name: Candy Powerup
   m_TagString: Powerup
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 1.3}
   m_EdgeRadius: 0
---- !u!114 &222258135878584966
+--- !u!114 &-9108368287728431211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7460781572636096222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16874bac19107a41acf3551df740976, type: 3}
+  m_Script: {fileID: 11500000, guid: 6967c177a1aa8d3498c7a621f427448a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0

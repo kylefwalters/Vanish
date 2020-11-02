@@ -2167,6 +2167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d19790f0ed3d4fb7555ed11191acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prerequisiteItems: []
+  levelManager: {fileID: 0}
 --- !u!1 &988871672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,6 +2591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d19790f0ed3d4fb7555ed11191acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prerequisiteItems: []
+  levelManager: {fileID: 0}
 --- !u!1 &1299775784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,6 +3057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8d19790f0ed3d4fb7555ed11191acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prerequisiteItems: []
+  levelManager: {fileID: 0}
 --- !u!1 &1515856364
 GameObject:
   m_ObjectHideFlags: 0
@@ -4963,6 +4969,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1299775785}
     m_Modifications:
+    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+      propertyPath: prerequisiteItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+      propertyPath: prerequisiteItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 952493921}
+    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+      propertyPath: prerequisiteItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 1507367496}
+    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+      propertyPath: prerequisiteItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 1289493438}
     - target: {fileID: 339966138891717244, guid: 558f92341a2ac994eac096151a723503, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.59

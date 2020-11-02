@@ -60,16 +60,18 @@ public class GameStateManager : MonoBehaviour
             pauseMenu.SetActive(true);
         }
 
-        enemies = GameObject.FindGameObjectsWithTag("enemy");
-        foreach(GameObject enemy in enemies)
-        {
-            enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-        }
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<topdown_Player>().enabled = false;
-        
 
+        //Make sure this is at the end of the function
+        if(GameObject.FindGameObjectsWithTag("enemy") != null)
+        {
+            enemies = GameObject.FindGameObjectsWithTag("enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+            }
+        } 
     }
 
     public void UnPause()
@@ -83,10 +85,13 @@ public class GameStateManager : MonoBehaviour
             pauseMenu.SetActive(false);
         }
 
-        foreach (GameObject enemy in enemies)
+        if (enemies != null)
         {
-            enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            //enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                //enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
