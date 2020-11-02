@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Objective : MonoBehaviour
@@ -12,7 +13,7 @@ public class Objective : MonoBehaviour
     private void Start()
     {
         Color color = GetComponent<SpriteRenderer>().color;
-        if (prerequisiteItems.Length > 0)
+        if (prerequisiteItems!=null)
         {
             GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.4f);
             if (transform.childCount > 0)
@@ -33,11 +34,14 @@ public class Objective : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            foreach(GameObject item in prerequisiteItems)
+            if (prerequisiteItems != null)
             {
-                if (item.activeInHierarchy == true)
+                foreach (GameObject item in prerequisiteItems)
                 {
-                    return;
+                    if (item.activeInHierarchy == true)
+                    {
+                        return;
+                    }
                 }
             }
             Destroy(this);
@@ -47,11 +51,14 @@ public class Objective : MonoBehaviour
 
     public void CheckPrereqs()
     {
-        foreach (GameObject item in prerequisiteItems)
+        if (prerequisiteItems != null)
         {
-            if (item.activeInHierarchy == true)
+            foreach (GameObject item in prerequisiteItems)
             {
-                return;
+                if (item.activeInHierarchy == true)
+                {
+                    return;
+                }
             }
         }
         Color color = GetComponent<SpriteRenderer>().color;

@@ -20,12 +20,10 @@ public class LevelManager : MonoBehaviour
 
     int currentScene;
 
-    void Start()
+    void Awake()
     {
-        DontDestroyOnLoad(this);
-
+        //DontDestroyOnLoad(this);
         
-
         GameObject[] objectivesArray = GameObject.FindGameObjectsWithTag("Objective");
         for(int i=0; i < objectivesArray.Length; i++)
         {
@@ -57,9 +55,17 @@ public class LevelManager : MonoBehaviour
 
     public void CheckForCompletion() //Checks if Level is complete
     {
-        if (_objectives.Count == 0)
+        foreach(GameObject objective in objectives)
         {
+            if (objective==null || objective.activeInHierarchy == true)
+                return;
+        }
+        int nextLevel = levelData.GetComponent<LevelData>().nextLevel;
+        if (nextLevel == -1)
             LoadLevel(currentScene + 1);
+        else
+        {
+            LoadLevel(nextLevel);
         }
     }
 
@@ -73,7 +79,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(int sceneIndex)
     {
         //Play Scene Transition
-
+        print("Loading Level " + SceneManager.GetSceneByBuildIndex(sceneIndex).name);
         SceneManager.LoadSceneAsync(sceneIndex);
     }
 }

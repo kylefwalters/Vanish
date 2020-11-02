@@ -1949,6 +1949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelTime: 15
+  nextLevel: -1
 --- !u!4 &934450620
 Transform:
   m_ObjectHideFlags: 0
@@ -4969,19 +4970,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1299775785}
     m_Modifications:
-    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
-      propertyPath: prerequisiteItems.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+    - target: {fileID: 992068371, guid: 558f92341a2ac994eac096151a723503, type: 3}
       propertyPath: prerequisiteItems.Array.data[0]
       value: 
       objectReference: {fileID: 952493921}
-    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+    - target: {fileID: 992068371, guid: 558f92341a2ac994eac096151a723503, type: 3}
       propertyPath: prerequisiteItems.Array.data[1]
       value: 
       objectReference: {fileID: 1507367496}
-    - target: {fileID: 992068369, guid: 558f92341a2ac994eac096151a723503, type: 3}
+    - target: {fileID: 992068371, guid: 558f92341a2ac994eac096151a723503, type: 3}
       propertyPath: prerequisiteItems.Array.data[2]
       value: 
       objectReference: {fileID: 1289493438}

@@ -58,7 +58,7 @@ public class topdown_Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.Substring(0, 5).ToLower() == "juice")
+        if (collision.name.Length >= 5 && collision.name.Substring(0, 5).ToLower() == "juice")
             juiceCount++;
     }
     private void OnTriggerExit2D(Collider2D collision)

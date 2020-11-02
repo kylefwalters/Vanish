@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 364959660093513550}
   - component: {fileID: 364959660093513552}
   - component: {fileID: 364959660093513551}
-  - component: {fileID: 2556070321349020576}
   m_Layer: 0
   m_Name: arrow
   m_TagString: Untagged
@@ -205,20 +204,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2556070321349020576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364959660093513549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8d19790f0ed3d4fb7555ed11191acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prerequisiteItems: []
-  levelManager: {fileID: 0}
 --- !u!1 &1157916704869954772
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +215,7 @@ GameObject:
   - component: {fileID: 339966138891717244}
   - component: {fileID: 992068370}
   - component: {fileID: 1002896190951036037}
+  - component: {fileID: 992068371}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Objective
@@ -330,3 +316,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14, y: 6}
   m_EdgeRadius: 0
+--- !u!114 &992068371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157916704869954772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8d19790f0ed3d4fb7555ed11191acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prerequisiteItems: []
+  levelManager: {fileID: 0}
