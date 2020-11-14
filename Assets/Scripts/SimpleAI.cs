@@ -24,6 +24,7 @@ public class SimpleAI : MonoBehaviour
     private void Start()
     {
         targetPosition = waypoints[0].position;
+        transform.rotation = Quaternion.LookRotation(transform.forward, (Vector3)targetPosition - transform.position);
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -38,6 +39,7 @@ public class SimpleAI : MonoBehaviour
                 if (Vector2.Distance(rb.position, targetPosition) < float.Epsilon)
                 {
                     targetPosition = waypoints[currentWaypoint].position;
+                    transform.rotation = Quaternion.LookRotation(transform.forward, (Vector3)targetPosition - transform.position);
                     currentWaypoint++;
                     if (currentWaypoint == waypoints.Length)
                     {
@@ -55,15 +57,18 @@ public class SimpleAI : MonoBehaviour
                         currentWaypoint -= 2;
                     }
                     targetPosition = waypoints[currentWaypoint].position;
-                }else if (Vector2.Distance(rb.position, targetPosition) < float.Epsilon && currentWaypoint > 0 && reverseOrder)
+                    transform.rotation = Quaternion.LookRotation(transform.forward, (Vector3)targetPosition - transform.position);
+                }
+                else if (Vector2.Distance(rb.position, targetPosition) < float.Epsilon && currentWaypoint >= 0 && reverseOrder)
                 {
                     currentWaypoint--;
-                    if (currentWaypoint == 0)
+                    if (currentWaypoint == -1)
                     {
                         reverseOrder = false;
                         currentWaypoint += 2;
                     }
                     targetPosition = waypoints[currentWaypoint].position;
+                    transform.rotation = Quaternion.LookRotation(transform.forward, (Vector3)targetPosition - transform.position);
                 }
                 break;
         }
