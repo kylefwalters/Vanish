@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
             objectives.Add(objectivesArray[i]);
         }
         _objectives = objectives;
-        itemsRemaining = (objectives.Count/2);
+        itemsRemaining = (objectives.Count-1);
 
         if (gameStateManager == null)
             gameStateManager = GameObject.Find("Game State Manager");

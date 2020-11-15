@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 231473414}
   m_Layer: 0
   m_Name: Umbrella (1)
-  m_TagString: Objective
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 286594799}
   m_Layer: 0
   m_Name: shadow
-  m_TagString: Objective
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 343068172}
   m_Layer: 0
   m_Name: shadow
-  m_TagString: Objective
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4485,7 +4485,7 @@ GameObject:
   - component: {fileID: 985408146}
   m_Layer: 0
   m_Name: shadow
-  m_TagString: Objective
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6358,7 +6358,7 @@ GameObject:
   - component: {fileID: 1401372740}
   m_Layer: 0
   m_Name: shadow
-  m_TagString: Objective
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
