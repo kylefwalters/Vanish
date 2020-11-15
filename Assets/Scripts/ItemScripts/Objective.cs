@@ -79,9 +79,13 @@ public class Objective : MonoBehaviour
     {
         if (levelManager != null)
         {
-            if(gameObject.name.Length>=5)
+            if (gameObject.name.Length >= 5)
+            {
                 if (gameObject.name.ToLower().Substring(0, 5) != "arrow")
                     levelManager.GetComponent<LevelManager>().itemsRemaining--;
+            }
+            else
+                levelManager.GetComponent<LevelManager>().itemsRemaining--;
             levelManager.GetComponent<LevelManager>().CheckForCompletion();
         }
     }
