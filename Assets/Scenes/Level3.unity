@@ -1542,7 +1542,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 370744970}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377333917}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: FinishLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &370744970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6686,10 +6698,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectives: []
+  itemsRemaining: 0
   levelData: {fileID: 2071875106}
   timerDisplay: {fileID: 909045032}
   isPaused: 0
   timeBar: {fileID: 548534367}
+  winMenu: {fileID: 883320629}
 --- !u!4 &1377333918
 Transform:
   m_ObjectHideFlags: 0

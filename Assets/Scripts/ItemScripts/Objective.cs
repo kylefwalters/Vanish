@@ -77,7 +77,12 @@ public class Objective : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(levelManager!=null)
+        if (levelManager != null)
+        {
+            if(gameObject.name.Length>=5)
+                if (gameObject.name.ToLower().Substring(0, 5) != "arrow")
+                    levelManager.GetComponent<LevelManager>().itemsRemaining--;
             levelManager.GetComponent<LevelManager>().CheckForCompletion();
+        }
     }
 }

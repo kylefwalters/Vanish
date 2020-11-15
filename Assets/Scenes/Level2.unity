@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 232279921}
   - component: {fileID: 232279923}
   - component: {fileID: 232279922}
+  - component: {fileID: 232279924}
   m_Layer: 5
   m_Name: Attempts (TMP)
   m_TagString: Untagged
@@ -995,6 +996,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232279920}
   m_CullTransparentMesh: 0
+--- !u!95 &232279924
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232279920}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a160e5b999b8a947b6ced0c1c88c584, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &286594797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1612,7 @@ GameObject:
   - component: {fileID: 444821235}
   - component: {fileID: 444821234}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Continue Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1679,7 +1699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 444821236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549717491}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: FinishLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &444821236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,10 +2459,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectives: []
+  itemsRemaining: 0
   levelData: {fileID: 103666721}
   timerDisplay: {fileID: 777310567}
   isPaused: 0
   timeBar: {fileID: 1637418197}
+  winMenu: {fileID: 2107464417}
 --- !u!4 &549717492
 Transform:
   m_ObjectHideFlags: 0
@@ -6657,6 +6691,7 @@ GameObject:
   - component: {fileID: 1419475442}
   - component: {fileID: 1419475444}
   - component: {fileID: 1419475443}
+  - component: {fileID: 1419475445}
   m_Layer: 5
   m_Name: Level Time (TMP)
   m_TagString: Untagged
@@ -6780,6 +6815,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419475441}
   m_CullTransparentMesh: 0
+--- !u!95 &1419475445
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419475441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db409392cd63c7f4eb51de973c839726, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1442178305
 GameObject:
   m_ObjectHideFlags: 0
