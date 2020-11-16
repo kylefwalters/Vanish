@@ -14,10 +14,10 @@ public class PowerupItem : ItemBase
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<topdown_Player>().lastItem = gameObject;
-            /*ItemEffect();
+            //collision.GetComponent<topdown_Player>().lastItem = gameObject;
+            collision.GetComponent<topdown_Player>().ItemEffect(gameObject);
 
-            Destroy(this);*/
+            //Destroy(this);
         }
     }
 
