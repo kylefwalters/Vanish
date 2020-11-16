@@ -9716,7 +9716,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   sharedProfile: {fileID: 11400000, guid: 937a0ae50f733094886cb8b9c09cfcff, type: 2}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  sharedProfile: {fileID: 11400000, guid: 136c8e6349381d84ca1648ffad670761, type: 2}
+=======
+  sharedProfile: {fileID: 11400000, guid: c9fbbc5b4104ee044bf275780bb31bf9, type: 2}
+>>>>>>> b38bf8b7c623de8e720398d0edff0d353b0fe133
+=======
+  sharedProfile: {fileID: 11400000, guid: c9fbbc5b4104ee044bf275780bb31bf9, type: 2}
+>>>>>>> b38bf8b7c623de8e720398d0edff0d353b0fe133
+>>>>>>> parent of 121d0be... Revert "Update level5.unity"
   isGlobal: 1
   blendDistance: 0
   weight: 1
