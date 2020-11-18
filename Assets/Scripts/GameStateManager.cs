@@ -64,12 +64,15 @@ public class GameStateManager : MonoBehaviour
         player.GetComponent<topdown_Player>().enabled = false;
 
         //Make sure this is at the end of the function
-        if(GameObject.FindGameObjectsWithTag("enemy") != null)
+        if (DoesTagExist("enemy"))
         {
-            enemies = GameObject.FindGameObjectsWithTag("enemy");
-            foreach (GameObject enemy in enemies)
+            if (GameObject.FindGameObjectsWithTag("enemy") != null)
             {
-                enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+                enemies = GameObject.FindGameObjectsWithTag("enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    enemy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+                }
             }
         } 
     }
@@ -102,5 +105,18 @@ public class GameStateManager : MonoBehaviour
     {
         print("Exiting");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public bool DoesTagExist(string tag)
+    {
+        try
+        {
+            GameObject.FindGameObjectWithTag(tag);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
