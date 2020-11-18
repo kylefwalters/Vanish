@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class topdown_Player : MonoBehaviour
 {
-    [Header("Player Parameters")]
     //the current speed of the player in respective axes
     private float currentSpeedx;
     private float currentSpeedy;
@@ -215,7 +214,7 @@ public class topdown_Player : MonoBehaviour
     }
 
     #region Powerups
-    public void ItemEffect(GameObject item)
+    void ItemEffect(GameObject item)
     {
         string itemName = item.name;
         Destroy(item);
@@ -223,7 +222,7 @@ public class topdown_Player : MonoBehaviour
         if(nameEnding.ToLowerInvariant()==" powerup")
             itemName = itemName.Substring(0, itemName.Length - 8).ToLowerInvariant();*/
         itemName = itemName.Substring(0, 5).ToLower();
-        print(itemName + "activated");
+        print(itemName);
 
         switch (itemName)
         {
@@ -243,12 +242,10 @@ public class topdown_Player : MonoBehaviour
     {
         while(_candyDuration >= 0)
         {
-            //print(_candyDuration);
-            _candyDuration -= 0.1f;
+            _candyDuration -= Time.deltaTime;
             yield return new WaitForSeconds(0.1f);
         }
         speedBuff /= 1.5f;
-        print("Candy Buff End");
         yield return null;
     }
     #endregion

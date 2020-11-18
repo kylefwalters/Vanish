@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1224111587909349351}
   - component: {fileID: 1224111587909349348}
   - component: {fileID: 1224111587909349350}
-  - component: {fileID: -2996803001180272496}
   m_Layer: 0
   m_Name: Candy Powerup 1
   m_TagString: Powerup
@@ -319,16 +318,3 @@ PolygonCollider2D:
       - {x: 14.316406, y: -17.304688}
       - {x: 14.375, y: -17.285156}
       - {x: 14.511719, y: -17.226562}
---- !u!114 &-2996803001180272496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224111587909349349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6967c177a1aa8d3498c7a621f427448a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
