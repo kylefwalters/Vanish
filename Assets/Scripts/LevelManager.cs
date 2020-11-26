@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     public TimeBar timeBar;
 
     bool levelLoading = false;
+    float loadTime = 0.0f;
     public GameObject winMenu;
     int currentScene;
     public AsyncOperation asyncOpertaion;
@@ -69,8 +70,17 @@ public class LevelManager : MonoBehaviour
             if (asyncOpertaion.progress >= 0.89)
             {
                 winMenu.transform.GetChild(6).gameObject.SetActive(true);
+                Invoke("removeLoading", 2.0f);
+            }
+            else {
+                
             }
         }
+    }
+
+    void removeLoading()
+    {
+        winMenu.transform.GetChild(7).gameObject.SetActive(false);
     }
 
     public void CheckForCompletion() //Checks if Level is complete
@@ -124,7 +134,9 @@ public class LevelManager : MonoBehaviour
         winMenu.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:#.00}s", timer);
         winMenu.transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>().text = totalAttempts.ToString();
         winMenu.transform.GetChild(6).gameObject.SetActive(false);
-        
+        winMenu.transform.GetChild(7).gameObject.SetActive(true);
+        loadTime = 0.0f;
+
         levelLoading = true;
     }
 
