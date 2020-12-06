@@ -38,9 +38,12 @@ public class Objective : MonoBehaviour
             {
                 foreach (GameObject item in prerequisiteItems)
                 {
-                    if (item.activeInHierarchy == true)
+                    if (item != null)
                     {
-                        return;
+                        if (item.activeInHierarchy == true)
+                        {
+                            return;
+                        }
                     }
                 }
             }

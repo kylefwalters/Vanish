@@ -17,8 +17,8 @@ public class topdown_Player : MonoBehaviour
     public float speedMod = 2.0f; //Speed modifier for adjusting player speed
     private int juiceCount = 0; //The number of juice puddles the player is touching
     public static float playerSize;
-    //private float timeTillStep;
-    //public float stepLength;
+    private float timeTillStep;
+    public float stepLength = 0.3f;
 
     private bool isMoving = false;
     private bool isHurt = false;
@@ -156,17 +156,18 @@ public class topdown_Player : MonoBehaviour
 
         //player footstep sounds
         #region Footsteps
-        /*if (isMoving == true)
+        if (isMoving == true)
         {
             if (timeTillStep <= 0)
             {
                 //Instantiate(footsteps, new Vector2(transform.position.x, transform.position.y), Quaternion.AngleAxis(0, Vector3.up));
+                GetComponent<AudioSource>().Play();
                 timeTillStep = stepLength;
             } else
             {
                 timeTillStep -= Time.deltaTime;
             }
-        }*/
+        }
         #endregion
 
         //cancels any velocity from collisions

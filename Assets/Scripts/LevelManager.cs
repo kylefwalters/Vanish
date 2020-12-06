@@ -131,7 +131,7 @@ public class LevelManager : MonoBehaviour
 
         GameObject.Find("Player").GetComponent<topdown_Player>().enabled = false;
         winMenu.SetActive(true);
-        winMenu.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:#.00}s", timer);
+        winMenu.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:#.00}s", levelData.GetComponent<LevelData>().levelTime - timer);
         winMenu.transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>().text = totalAttempts.ToString();
         winMenu.transform.GetChild(6).gameObject.SetActive(false);
         winMenu.transform.GetChild(7).gameObject.SetActive(true);
